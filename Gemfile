@@ -52,12 +52,11 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem "capybara"
-  gem "selenium-webdriver"
+  gem "rspec-rails", "~> 8.0"
+  gem "factory_bot_rails"
+  gem "faker"
 end
 
 gem "vite_rails", "~> 3.0"
-
-gem "rspec-rails", "~> 8.0", groups: [ :development, :test ]
 
 gem "activerecord-session_store", "~> 2.2"

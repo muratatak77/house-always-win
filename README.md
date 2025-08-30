@@ -77,6 +77,7 @@ The SignWell Team
     - Player (id, email, account_credits)
     - GameSession (id, player_id, credits, status, last_roll_at )
     - Roll (id, game_session_id, syboml:json ,reward, cheated:boolean)
+    - Cashout (amount)
 
 ## Data Rules (brief)
   - Start credits = 10
