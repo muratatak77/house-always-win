@@ -28,8 +28,8 @@ RSpec.describe GameSession, type: :model do
     end
 
     it "has many rolls (destroy on session destroy)" do
-      assoc = described_class.reflect_on_association(:rolls)
-      expect(assoc.macro).to eq(:has_many)
+      assoc = described_class.reflect_on_association(:rolls) # metadata about association
+      expect(assoc.macro).to eq(:has_many) # type of association
       expect(assoc.options[:dependent]).to eq(:destroy)
     end
   end

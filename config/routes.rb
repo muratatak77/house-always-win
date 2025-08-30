@@ -12,4 +12,12 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  namespace :api do
+    namespace :v1 do
+      resources :game_sessions, only: [ :create, :show ]
+      resources :rolls, only: [ :create ]
+      resources :cash_outs, only: [ :create ]
+    end
+  end
 end

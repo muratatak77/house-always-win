@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Services::SlotMachine do
+RSpec.describe SlotMachineService do
   subject(:slot_machine) { described_class.new }
 
   describe "#roll" do

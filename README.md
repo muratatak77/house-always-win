@@ -55,7 +55,7 @@ The SignWell Team
 # Implementation Plan 
 
 ## Tech Stack
-  - Backend: Ruby 3 - Rails 8 API only mode
+  - Backend: Ruby 3 - Rails 8
   - Frontend: React JS + Vite(vite_rails) for bundling - Vite is fast dev, small prod build
   - Testing : Rspec for backentd , Jest/React testing for frontend
   - Database: PostgreSQL
@@ -64,15 +64,16 @@ The SignWell Team
 
 ## Architecture
   - MVC 
-  - API only mode
   - Domain Service
     - Slot Machine Service -> handles roll logic + symbols RNG (random number generation)
     - Reward Service  -> calculates reward
     - Cheat Logic Service -> applies re-roll cheat rules
-  - Controller (JSON)
-    - Game Sessions
-    - Rolls
-    - Cashouts
+  - Controller (JSON) - 
+    - Home (root)
+    - API Only Mode : 
+        - Game Sessions
+        - Rolls
+        - Cashouts
   - Models
     - Player (id, email, account_credits)
     - GameSession (id, player_id, credits, status, last_roll_at )
