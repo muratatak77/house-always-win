@@ -68,6 +68,7 @@ The SignWell Team
     - Slot Machine Service -> handles roll logic + symbols RNG (random number generation)
     - Reward Service  -> calculates reward
     - Cheat Logic Service -> applies re-roll cheat rules
+    - Cash Out Service -> payout session credits to player, then close session
   - Controller (JSON) - 
     - Home (root)
     - API Only Mode : 
