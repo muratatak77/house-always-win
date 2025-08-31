@@ -64,7 +64,3 @@ end
 gem 'vite_rails', '~> 3.0'
 
 gem 'activerecord-session_store', '~> 2.2'
-
-# dev/test only
-group :development, :test do
-end

@@ -1,10 +1,7 @@
-import React from 'react'
-import { createRoot } from 'react-dom/client'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "../components/App";
+import "../styles/application.css";
 
-function App() {
-  return <h1>House Always Wi</h1>
-}
-
-const root = document.getElementById('root')
-
-createRoot(root).render(<App />)
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);
