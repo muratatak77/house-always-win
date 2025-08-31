@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # move credits to player account and close session
 class CashOutService
   class AlreadyCashedOutError < StandardError; end

@@ -1,15 +1,23 @@
+# frozen_string_literal: true
+
 module Api
   module V1
     class GameSessionsController < Api::BaseApiController
+      # show a session
+      def show
+        gs = GameSession.find(params[:id])
+        render json: present(gs), status: :ok
+      rescue ActiveRecord::RecordNotFound
+        render json: {error: 'not_found'}, status: :not_found
+      end
+
       # create new open session for player
       # if open session already exist, return it
       def create
         player = Player.find(params.require(:player_id))
 
         gs = player.game_sessions.find_by(status: :open)
-        if gs
-          return render json: present(gs), status: :ok
-        end
+        return render json: present(gs), status: :ok if gs
 
         # make new open session
         begin
@@ -20,14 +28,6 @@ module Api
           gs = player.game_sessions.find_by!(status: :open)
           render json: present(gs), status: :ok
         end
-      end
-
-      # show a session
-      def show
-        gs = GameSession.find(params[:id])
-        render json: present(gs), status: :ok
-      rescue ActiveRecord::RecordNotFound
-        render json: { error: "not_found" }, status: :not_found
       end
 
       private

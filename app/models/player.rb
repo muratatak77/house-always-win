@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Player < ApplicationRecord
   # if we delete player, delete all their sessions
   has_many :game_sessions, dependent: :destroy
@@ -6,5 +8,5 @@ class Player < ApplicationRecord
   has_many :cash_outs, dependent: :nullify
 
   validates :email, presence: true, uniqueness: true
-  validates :account_credits, numericality: { greater_than_or_equal_to: 0 }
+  validates :account_credits, numericality: {greater_than_or_equal_to: 0}
 end

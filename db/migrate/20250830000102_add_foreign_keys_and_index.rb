@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddForeignKeysAndIndex < ActiveRecord::Migration[8.0]
   def up
     # Step 1: Add foreign key columns, indexes, and foreign key constraints
@@ -21,13 +23,13 @@ class AddForeignKeysAndIndex < ActiveRecord::Migration[8.0]
 
     # Step 2: Add partial unique index to ensure one active session per player
     add_index :game_sessions, :player_id,
-      unique: true,
-      where: "status = 0",
-      name: "idx_unique_open_session_per_player"
+              unique: true,
+              where: 'status = 0',
+              name: 'idx_unique_open_session_per_player'
   end
 
   def down
-    remove_index :game_sessions, name: "idx_unique_open_session_per_player"
+    remove_index :game_sessions, name: 'idx_unique_open_session_per_player'
 
     remove_foreign_key :cash_outs,    column: :game_session_id
     remove_foreign_key :cash_outs,    column: :player_id

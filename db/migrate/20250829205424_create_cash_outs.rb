@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateCashOuts < ActiveRecord::Migration[8.0]
   def change
     create_table :cash_outs do |t|

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # house maybe cheat when user too rich
 class CheatLogicService
   def self.should_reroll?(credits:, win:, rng: Random)

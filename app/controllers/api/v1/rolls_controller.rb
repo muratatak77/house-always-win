@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # app/controllers/api/v1/rolls_controller.rb
 module Api
   module V1
@@ -18,8 +20,8 @@ module Api
       def roll_payload(res)
         {
           symbols: res[:symbols],
-          win:     res[:win],
-          reward:  res[:reward],
+          win: res[:win],
+          reward: res[:reward],
           cheated: res[:cheated],
           credits: res[:credits]
         }
@@ -27,15 +29,15 @@ module Api
 
       # tell base which 404 code to use
       def not_found_code
-        "session_not_found"
+        'session_not_found'
       end
 
       def render_session_closed(_e)
-        render_error("session_closed", :unprocessable_content)
+        render_error('session_closed', :unprocessable_content)
       end
 
       def render_no_credits(_e)
-        render_error("no_credits", :unprocessable_content)
+        render_error('no_credits', :unprocessable_content)
       end
     end
   end

@@ -1,8 +1,38 @@
-# Omakase Ruby styling for Rails
-inherit_gem: { rubocop-rails-omakase: rubocop.yml }
+# .rubocop.yml
+plugins:
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-performance
 
-# Overwrite or add rules to create your own house style
-#
-# # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
-# Layout/SpaceInsideArrayLiteralBrackets:
-#   Enabled: false
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.3
+  TargetRailsVersion: 8.0
+  Exclude:
+    - "db/schema.rb"
+    - "bin/**/*"
+    - "node_modules/**/*"
+    - "vendor/**/*"
+
+Layout/LineLength:
+  Max: 120
+
+Layout/ExtraSpacing:         { Enabled: true }
+Layout/SpaceAfterComma:      { Enabled: true }
+Layout/SpaceAroundOperators: { Enabled: true }
+Layout/SpaceBeforeFirstArg:  { Enabled: true }
+Layout/SpaceInsideParens:    { EnforcedStyle: no_space }
+Layout/SpaceInsideArrayLiteralBrackets: { EnforcedStyle: no_space }
+Layout/SpaceInsideHashLiteralBraces:    { EnforcedStyle: no_space }
+Layout/TrailingWhitespace:   { Enabled: true }
+Layout/TrailingEmptyLines:   { Enabled: true }
+Layout/LeadingEmptyLines:    { Enabled: true }
+Layout/EmptyLineBetweenDefs: { Enabled: true }
+Layout/EmptyLinesAroundClassBody:  { Enabled: true }
+Layout/EmptyLinesAroundModuleBody: { Enabled: true }
+Layout/EmptyLinesAroundMethodBody: { Enabled: true }
+Layout/EndOfLine:            { EnforcedStyle: lf }
+
+Rails:       { Enabled: true }
+RSpec:       { Enabled: true }
+Performance: { Enabled: true }

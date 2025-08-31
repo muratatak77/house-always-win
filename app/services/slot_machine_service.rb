@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SlotMachineService
   class SessionClosedError < StandardError; end
   class NoCreditsError < StandardError; end
@@ -31,15 +33,15 @@ class SlotMachineService
 
   # session must be playable
   def ensure_ok!
-    raise SessionClosedError, "closed" if @session.status != "open"
-    raise NoCreditsError, "no credits" if @session.credits <= 0
+    raise SessionClosedError, 'closed' if @session.status != 'open'
+    raise NoCreditsError, 'no credits' if @session.credits <= 0
   end
 
   # one spin, calc reward
   def do_spin
     s = pick_three
     r = RewardService.for_symbols(s)
-    { symbols: s, reward: r, win: r > 0, cheated: false }
+    {symbols: s, reward: r, win: r.positive?, cheated: false}
   end
 
   # house maybe re-roll if win and credits high
@@ -53,13 +55,14 @@ class SlotMachineService
 
     s2 = pick_three
     r2 = RewardService.for_symbols(s2)
-    { symbols: s2, reward: r2, win: r2 > 0, cheated: true }
+    {symbols: s2, reward: r2, win: r2.positive?, cheated: true}
   end
 
   # next credits after this round
   def credits_after(round)
     val = round[:win] ? (@session.credits + round[:reward]) : (@session.credits - 1)
-    raise NoCreditsError, "no credits" if val < 0
+    raise NoCreditsError, 'no credits' if val.negative?
+
     val
   end
 
@@ -88,8 +91,8 @@ class SlotMachineService
 
   # pick 3 letters using rng
   def pick_three
-    [ SYMBOLS.sample(random: @rng),
+    [SYMBOLS.sample(random: @rng),
      SYMBOLS.sample(random: @rng),
-     SYMBOLS.sample(random: @rng) ]
+     SYMBOLS.sample(random: @rng)]
   end
 end

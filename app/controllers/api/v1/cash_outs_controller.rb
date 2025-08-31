@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # app/controllers/api/v1/cash_outs_controller.rb
 module Api
   module V1
@@ -21,7 +23,7 @@ module Api
       end
 
       def not_found_code
-        "session_not_found"
+        'session_not_found'
       end
     end
   end
