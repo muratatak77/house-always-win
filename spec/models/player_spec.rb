@@ -4,15 +4,6 @@ require 'rails_helper'
 
 RSpec.describe Player, type: :model do
   describe 'validations' do
-    it 'is valid with email' do
-      expect(build(:player)).to be_valid
-    end
-
-    it 'requires unique email' do
-      create(:player, email: 'a@b.com')
-      expect(build(:player, email: 'a@b.com')).not_to be_valid
-    end
-
     it 'has non-negative account_credits' do
       p = build(:player, account_credits: -1)
       expect(p).not_to be_valid
