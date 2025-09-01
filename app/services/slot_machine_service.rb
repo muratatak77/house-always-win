@@ -39,8 +39,7 @@ class SlotMachineService
 
   # one spin, calc reward
   def do_spin
-    # s = pick_three
-    s = ["C", "C", "C"]
+    s = pick_three
     r = RewardService.for_symbols(s)
     {symbols: s, reward: r, win: r.positive?, cheated: false}
   end
