@@ -139,4 +139,15 @@ The SignWell Team
       - RollButton
       - CashOutButton
 
-     
+## Testing 
+
+ - Ruby on Rails - RSpec : 
+
+    ```
+    rspec spec
+    ```
+
+ - React JS  - Jest 
+    ```
+    npx jest 
+    ```
