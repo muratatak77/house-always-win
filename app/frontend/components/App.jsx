@@ -4,9 +4,11 @@ import StartButton from "./StartButton";
 import RollButton from "./RollButton";
 import CashOutButton from "./CashOutButton";
 
+// Main slot machine app component
+// Manages game session state and credit display
 export default function App() {
   const [session, setSession] = useState(null);
-  const [credits, setCredits] = useState(0); // UI shows current session credits
+  const [credits, setCredits] = useState(0);
   const [symbols, setSymbols] = useState(["C", "L", "O"]);
 
   return (
@@ -15,17 +17,30 @@ export default function App() {
       <h3>Credits: {credits}</h3>
 
       <div className="buttons">
+        {/* Button to start new game session */}
         <StartButton
-          onSessionCreated={(data) => {
-            setSession(data);
-            setCredits(data.credits);
-            setSymbols(["C", "L", "O"]); // reset symbols
+          onSessionCreated={(sessionData) => {
+            setSession(sessionData);
+            setCredits(sessionData.credits);
+            setSymbols(["C", "L", "O"]);
           }}
         />
-        <RollButton session={session} onRollResult={setCredits} />
+
+        {/* Button to roll - only enabled when session exists */}
+        <RollButton
+          session={session}
+          onRollResult={(resultData) => {
+            if (resultData.credits !== undefined) {
+              setCredits(resultData.credits);
+            }
+            if (resultData.symbols) {
+              setSymbols(resultData.symbols);
+            }
+          }}
+        />
       </div>
 
-      <Board symbols={["C", "L", "O"]} />
+      <Board symbols={symbols} />
 
       <div className="buttons">
         <CashOutButton session={session} onCashOut={setCredits} />
