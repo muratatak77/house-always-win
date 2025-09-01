@@ -43,7 +43,12 @@ export default function App() {
       <Board symbols={symbols} />
 
       <div className="buttons">
-        <CashOutButton session={session} onCashOut={setCredits} />
+        <CashOutButton
+          session={session}
+          onCashOut={(res) => {
+            setCredits(0);
+          }}
+        />
       </div>
     </div>
   );

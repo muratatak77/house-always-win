@@ -76,7 +76,7 @@ The SignWell Team
         - Rolls
         - Cashouts
   - Models
-    - Player (id, email, account_credits)
+    - Player (id, account_credits)
     - GameSession (id, player_id, credits, status, last_roll_at )
     - Roll (id, game_session_id, syboml:json ,reward, cheated:boolean)
     - Cashout (amount)
